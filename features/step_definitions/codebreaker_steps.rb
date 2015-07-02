@@ -29,13 +29,13 @@ Given(/^the secret code is "([^"]*)"$/) do |secret|
 end
 
 When(/^I guess "([^"]*)"$/) do |guess|
-	@messenger = StringIO.new
+	#@messenger = StringIO.new
 	game = CodeBreaker::Game.new(@messenger)
 	game.guess(guess)
 end
 
 
-Then(/^I should see "([^"]*)"$/) do |mark|
-	@messenger = StringIO.new
-	expect(@messenger.string.split("/n")).to include(mark)
+Then(/^I should see "([^"]*)"$/) do |message|
+	#@messenger = StringIO.new
+	expect(@messenger.string).to include(message)
 end

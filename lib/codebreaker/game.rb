@@ -18,6 +18,7 @@ module CodeBreaker
 					mark << '-'
 				end 
 			end 
+			#mark = mark.split('').sort.join  MY ANSWER!
 			@output.puts mark
 		end
 		def exact_match?(guess, index)
