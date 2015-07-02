@@ -41,6 +41,7 @@ module CodeBreaker
 					game.guess('1555')
 				end 
 			end 
+			
 		end 
 
 	end
