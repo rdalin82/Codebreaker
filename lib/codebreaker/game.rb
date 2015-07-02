@@ -12,7 +12,7 @@ module CodeBreaker
 		def guess(guess)
 			if exact_match?(guess, 0)
 				mark = "+"
-			elsif @secret.include?(guess[0])
+			elsif number_match?(guess, 0)
 				mark = '-'
 			else 
 				mark = ''
@@ -21,6 +21,9 @@ module CodeBreaker
 		end
 		def exact_match?(guess, index)
 			guess[index] == @secret[index]
+		end 
+		def number_match?(guess, index)
+			@secret.include?(guess[index])
 		end 
 	end
 
