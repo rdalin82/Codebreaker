@@ -17,12 +17,25 @@ end
 
 When /^I start a new game$/ do 
 	@messenger = StringIO.new
-	#replace output with @messenger
+	#replace output with @messenger (use in each step)
 	game = CodeBreaker::Game.new(@messenger)
-	game.start
+	game.start('1234')
 end
 
-Given /^the secret code is "([^'']*)"$/ do [secret]
-	game = Codebreaker::Game.new(output)
+Given(/^the secret code is "([^"]*)"$/) do |secret|
+	@messenger = StringIO.new
+	game = CodeBreaker::Game.new(@messenger)
 	game.start(secret)
-end 
+end
+
+When(/^I guess "([^"]*)"$/) do |guess|
+	@messenger = StringIO.new
+	game = CodeBreaker::Game.new(@messenger)
+	game.guess(guess)
+end
+
+
+Then(/^I should see "([^"]*)"$/) do |mark|
+	@messenger = StringIO.new
+	expect(@messenger.string.split("/n")).to include(mark)
+end
