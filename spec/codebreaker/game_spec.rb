@@ -55,7 +55,43 @@ module CodeBreaker
 					game.guess('2535')
 				end 
 			end 
-			
+			context 'with 1 number match 2 exact match' do 
+				it 'sends a mark with ++-' do 
+					game.start('1234')
+					output.should_receive(:puts).with('++-')
+					game.guess('5134')
+				end 
+			end 
+			context 'with 2 number match 2 exact match' do 
+				it 'sends a mark with ++--' do 
+					game.start('1234')
+					output.should_receive(:puts).with('++--')
+					game.guess('4231')
+				end 
+			end 
+			context 'with 3 number match 1 exact match' do 
+				it 'sends a mark with +---' do 
+					game.start('1234') 
+					output.should_receive(:puts).with('+---')
+					game.guess('1423')
+				end
+			end
+
+			context 'with 4 exact match' do 
+				it 'sends a mark with +++-' do 
+					game.start('1234')
+					output.should_receive(:puts).with('++++')
+					game.guess('1234')
+				end 
+			end
+			context 'with secret 1234 and guess 2222' do 
+				it 'sends a mark +' do 
+					game.start('1234')
+					output.should_receive(:puts).with('+')
+					game.guess('2222')
+				end 
+			end 
+
 		end 
 
 	end
