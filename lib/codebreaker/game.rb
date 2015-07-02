@@ -14,18 +14,20 @@ module CodeBreaker
 			(0..3).each do |index|
 				if exact_match?(guess, index)
 					mark << "+"
-				elsif number_match?(guess, index)
-					mark << '-'
 				end 
 			end 
-			#mark = mark.split('').sort.join  MY ANSWER!
+			(0..3).each do |index|
+				if number_match?(guess, index)
+					mark << '-'
+				end
+			end 
 			@output.puts mark
 		end
 		def exact_match?(guess, index)
 			guess[index] == @secret[index]
 		end 
 		def number_match?(guess, index)
-			@secret.include?(guess[index])
+			@secret.include?(guess[index]) && !exact_match?(guess, index)
 		end 
 	end
 
