@@ -6,9 +6,6 @@ module CodeBreaker
 			let(:game) { Game.new(output) }
 		
 		describe '#start' do 
-			let(:output) { double('output').as_null_object }
-			let(:game) { Game.new(output) }
-		
 			it 'sends a welcome message' do
 				output = double('output').as_null_object
 				game = Game.new(output)
@@ -22,5 +19,23 @@ module CodeBreaker
 				game.start('1234')
 			end
 		end 
+		describe "#guess" do
+			context 'with no matches' do 
+				it 'sends a mark with ""' do
+					game.start('1234')
+					output.should_receive(:puts).with('')
+					game.guess('5555')
+				end 
+			end 
+			context 'with 1 number match' do
+				it 'sends a mark with "-"' do 
+					game.start('1234')
+					output.should_receive(:puts).with('-')
+					game.guess('2555')
+				end 
+			end 
+			
+		end 
+
 	end
 end  
