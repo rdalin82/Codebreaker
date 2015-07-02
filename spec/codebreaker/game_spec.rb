@@ -1,10 +1,14 @@
 require 'spec_helper'
 
 module CodeBreaker
-	describe Game do
-		let(:output) { double('output').as_null_object }
-		let(:game) { Game.new(output) }
+	describe Game do 
+			let(:output) { double('output').as_null_object }
+			let(:game) { Game.new(output) }
+		
 		describe '#start' do 
+			let(:output) { double('output').as_null_object }
+			let(:game) { Game.new(output) }
+		
 			it 'sends a welcome message' do
 				output = double('output').as_null_object
 				game = Game.new(output)
