@@ -54,7 +54,7 @@ module CodeBreaker
 					output.should_receive(:puts).with('+-')
 					game.guess('2535')
 				end 
-			end 
+			end
 			
 		end 
 
